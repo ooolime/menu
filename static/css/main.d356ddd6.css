@@ -1,0 +1,2 @@
+body,html{margin:0;padding:0}.layout{align-items:center;display:flex;flex-direction:column;height:100vh;justify-content:center;width:100%}.page{overflow-y:auto}.page,.page__bg-image{height:100%;width:100%}.page__bg-image{bottom:0;left:0;object-fit:cover;opacity:.1;position:fixed;right:0;top:0;z-index:-1}.page__bg-image-conatiner{-webkit-animation:fadein .5s;animation:fadein .5s}@-webkit-keyframes fadein{0%{opacity:0}to{opacity:1}}@keyframes fadein{0%{opacity:0}to{opacity:1}}
+/*# sourceMappingURL=main.d356ddd6.css.map*/
