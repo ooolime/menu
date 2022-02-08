@@ -17,7 +17,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="table" element={<TableScreen data={data} />} />
+            <Route path="/table" element={<TableScreen data={data} />} />
           </Route>
         </Routes>
       )}
