@@ -1,7 +1,10 @@
 import * as React from "react";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Button, ButtonGroup, CircularProgress } from "@mui/material";
+import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
 import useGoogleSheets from "use-google-sheets";
 import TableScreen from "./TableScreen";
+import { Monitor } from "@mui/icons-material";
+import "./App.css";
 
 export default function App() {
   const { data, loading } = useGoogleSheets({
@@ -9,14 +12,16 @@ export default function App() {
     sheetId: "1Z23qOoj4SAVfolPrAUsTuboHanDKlM5viX_ntBrdyYA",
   });
 
+  const settings = data?.find((item: any) => item?.id === "settings")?.data;
+
   return (
-    <div>
+    <div className="layout">
       {loading ? (
-        "loading"
+        <CircularProgress />
       ) : (
         <Routes>
           <Route path="*" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<Home settings={settings} />} />
             <Route path="table" element={<TableScreen data={data} />} />
           </Route>
         </Routes>
@@ -29,24 +34,25 @@ function Layout() {
   return <Outlet />;
 }
 
-function Home() {
+function Home({ settings }: { settings: any }) {
+  let navigate = useNavigate();
   return (
     <div>
-      <h2>Home</h2>
-      <ul>
-        <li>
-          <Link to="/table?monitor=1">Monitor 1</Link>
-        </li>
-        <li>
-          <Link to="/table?monitor=2">Monitor 2</Link>
-        </li>
-        <li>
-          <Link to="/table?monitor=3">Monitor 3</Link>
-        </li>
-        <li>
-          <Link to="/table?monitor=4">Monitor 4</Link>
-        </li>
-      </ul>
+      <ButtonGroup
+        variant="contained"
+        aria-label="outlined primary button group"
+      >
+        {settings?.slice(1)?.map((item: any) => {
+          return (
+            <Button
+              startIcon={<Monitor />}
+              onClick={() => navigate(`/table?monitor=${item?.monitor}`)}
+            >
+              {item?.title}
+            </Button>
+          );
+        })}
+      </ButtonGroup>
     </div>
   );
 }
