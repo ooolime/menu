@@ -40,7 +40,7 @@ const TableScreen: FC<Props> = ({ data }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Наименование 2</TableCell>
+            <TableCell>Наименование</TableCell>
             <TableCell align="right">Выход</TableCell>
             <TableCell align="right">Цена</TableCell>
             <TableCell align="right">Ккал</TableCell>
