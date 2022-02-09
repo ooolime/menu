@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Button, ButtonGroup, CircularProgress } from "@mui/material";
+import { Button, ButtonGroup, CircularProgress, Fab } from "@mui/material";
 import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
 import useGoogleSheets from "use-google-sheets";
 import TableScreen from "./TableScreen";
 import { Monitor } from "@mui/icons-material";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import "./App.css";
 
 export default function App() {
@@ -53,6 +54,9 @@ function Home({ settings }: { settings: any }) {
           );
         })}
       </ButtonGroup>
+      <Fab className="full-screen" size="medium" aria-label="add">
+        <FullscreenIcon />
+      </Fab>
     </div>
   );
 }

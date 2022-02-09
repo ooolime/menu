@@ -44,3 +44,34 @@ body {
     opacity: 1;
   }
 }
+
+.main-table {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.main-table-title {
+  font-size: 32px !important;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.main-table-subtitle {
+  font-size: 20px !important;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.main-table td,
+.main-table th {
+  padding: 4px;
+  font-size: 18px;
+  border-color: #00000025;
+}
+
+.full-screen {
+  bottom: 24px;
+  right: 24px;
+  position: fixed !important;
+}
