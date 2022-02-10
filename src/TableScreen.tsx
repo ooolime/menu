@@ -6,8 +6,10 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import moment from "moment";
 import { FC } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import Slider from "./Slider";
 
 type Props = {
   data?: any;
@@ -16,6 +18,7 @@ type Props = {
 const TableScreen: FC<Props> = ({ data }) => {
   let [searchParams] = useSearchParams();
   let monitorNumber = searchParams.get("monitor");
+  let isSlider = searchParams.get("slider");
 
   const currentMonitor = data?.find(
     (item: any) => item?.id === monitorNumber
@@ -27,9 +30,9 @@ const TableScreen: FC<Props> = ({ data }) => {
     (item: any) => item?.monitor === monitorNumber
   );
 
-  var utc = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
-
-  return (
+  return isSlider ? (
+    <Slider data={currentMonitor} />
+  ) : (
     <div className="page">
       <div className="page__bg-image-conatiner">
         <img
@@ -42,7 +45,7 @@ const TableScreen: FC<Props> = ({ data }) => {
         {currentMonitorSettings?.title}
       </Typography>
       <Typography className="main-table-subtitle" variant="h2">
-        {utc}
+        {moment().format("dddd, D MMMM YYYY")}
       </Typography>
       {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
       <Table className="main-table">
@@ -58,7 +61,7 @@ const TableScreen: FC<Props> = ({ data }) => {
         <TableBody>
           {currentMonitor?.slice(1)?.map((row: any, index: number) => (
             <TableRow
-              key={row.name}
+              key={row.name + index}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell>{index + 1}</TableCell>

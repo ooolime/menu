@@ -3,6 +3,9 @@ body {
   padding: 0;
   margin: 0;
 }
+.fullscreen {
+  background-color: #fff;
+}
 
 .layout {
   width: 100%;
@@ -11,12 +14,16 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  position: relative;
 }
 
 .page {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .page__bg-image {
@@ -74,4 +81,20 @@ body {
   bottom: 24px;
   right: 24px;
   position: fixed !important;
+}
+
+div.slider-item {
+  width: 100%;
+  height: 100vh;
+}
+
+div.slider-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-root {
+  position: relative;
+  z-index: 10;
 }
