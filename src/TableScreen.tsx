@@ -45,9 +45,8 @@ const TableScreen: FC<Props> = ({ data }) => {
         {currentMonitorSettings?.title}
       </Typography>
       <Typography className="main-table-subtitle" variant="h2">
-        {moment().format("dddd, D MMMM YYYY")}
+        {moment().format("dddd, D MMMM YYYY г.")}
       </Typography>
-      {/* <pre>{JSON.stringify(settings, null, 2)}</pre> */}
       <Table className="main-table">
         <TableHead>
           <TableRow>
@@ -59,18 +58,27 @@ const TableScreen: FC<Props> = ({ data }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentMonitor?.slice(1)?.map((row: any, index: number) => (
-            <TableRow
-              key={row.name + index}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell align="right">{row.weight}</TableCell>
-              <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.kkal}</TableCell>
-            </TableRow>
-          ))}
+          {currentMonitor?.slice(1)?.map((row: any, index: number) => {
+            const isSubtitle = !row?.price && !row?.weight && !row?.kkal;
+            return isSubtitle ? (
+              <TableRow key={row.name + index}>
+                <TableCell className="table-subtitle" colSpan={5}>
+                  {row.name}
+                </TableCell>
+              </TableRow>
+            ) : (
+              <TableRow
+                key={row.name + index}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell align="right">{row.weight}</TableCell>
+                <TableCell align="right">{row.price}</TableCell>
+                <TableCell align="right">{row.kkal}</TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

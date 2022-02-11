@@ -98,3 +98,8 @@ div.slider-item img {
   position: relative;
   z-index: 10;
 }
+
+td.table-subtitle {
+  font-weight: bold;
+  text-align: center;
+}
