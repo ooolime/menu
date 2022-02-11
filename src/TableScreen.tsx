@@ -30,6 +30,20 @@ const TableScreen: FC<Props> = ({ data }) => {
     (item: any) => item?.monitor === monitorNumber
   );
 
+  const mapData = () => {
+    let counter = 1;
+    const data: any = [];
+    currentMonitor?.slice(1)?.forEach((row: any, index: number) => {
+      const isSubtitle = !row?.price && !row?.weight && !row?.kkal;
+      if (isSubtitle) counter = 0;
+      const number = counter;
+      data.push({ ...row, number });
+      counter++;
+    });
+
+    return data;
+  };
+
   return isSlider ? (
     <Slider data={currentMonitor} />
   ) : (
@@ -58,24 +72,24 @@ const TableScreen: FC<Props> = ({ data }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentMonitor?.slice(1)?.map((row: any, index: number) => {
+          {mapData()?.map((row: any, index: number) => {
             const isSubtitle = !row?.price && !row?.weight && !row?.kkal;
             return isSubtitle ? (
-              <TableRow key={row.name + index}>
+              <TableRow key={row?.name + index}>
                 <TableCell className="table-subtitle" colSpan={5}>
-                  {row.name}
+                  {row?.name}
                 </TableCell>
               </TableRow>
             ) : (
               <TableRow
-                key={row.name + index}
+                key={row?.name + index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell align="right">{row.weight}</TableCell>
-                <TableCell align="right">{row.price}</TableCell>
-                <TableCell align="right">{row.kkal}</TableCell>
+                <TableCell>{row?.number}</TableCell>
+                <TableCell>{row?.name}</TableCell>
+                <TableCell align="right">{row?.weight}</TableCell>
+                <TableCell align="right">{row?.price}</TableCell>
+                <TableCell align="right">{row?.kkal}</TableCell>
               </TableRow>
             );
           })}

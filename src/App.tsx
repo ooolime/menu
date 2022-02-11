@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, ButtonGroup, CircularProgress, Fab } from "@mui/material";
+import { Box, Button, CircularProgress, Fab } from "@mui/material";
 import { Routes, Route, Outlet, useNavigate } from "react-router-dom";
 import useGoogleSheets from "use-google-sheets";
 import TableScreen from "./TableScreen";
@@ -72,25 +72,23 @@ function Home({ settings }: { settings: any }) {
 
   return (
     <div>
-      <ButtonGroup
-        variant="contained"
-        aria-label="outlined primary button group"
-      >
-        {settings?.slice(1)?.map((item: any) => {
-          const slider = item?.img === "slider" ? "&slider=true" : "";
-          return (
+      {settings?.slice(1)?.map((item: any) => {
+        const slider = item?.img === "slider" ? "&slider=true" : "";
+        return (
+          <Box m={2} key={item?.title + item?.monitor}>
             <Button
-              key={item?.title}
               startIcon={<Monitor />}
+              variant="contained"
+              style={{ width: 320 }}
               onClick={() =>
                 navigate(`/table?monitor=${item?.monitor}${slider}`)
               }
             >
               {item?.title}
             </Button>
-          );
-        })}
-      </ButtonGroup>
+          </Box>
+        );
+      })}
     </div>
   );
 }
