@@ -53,28 +53,32 @@ body {
 }
 
 .main-table {
-  max-width: 640px;
+  max-width: 75%;
   margin: 0 auto;
 }
 
 .main-table-title {
   font-size: 32px !important;
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-table-subtitle {
   font-size: 20px !important;
   text-align: center;
-  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-top: 4px;
 }
 
 .main-table td,
 .main-table th {
   padding: 4px;
-  font-size: 18px;
-  border-color: #00000025;
+  font-size: inherit;
+  border-color: #00000028;
 }
 
 .full-screen {
@@ -100,6 +104,30 @@ div.slider-item img {
 }
 
 td.table-subtitle {
-  font-weight: bold;
+  font-weight: 500;
   text-align: center;
+}
+
+td.table-column-price {
+  font-weight: 500;
+}
+
+td.table-column-price,
+td.table-column-weight,
+td.table-column-kkal {
+  min-width: 60px;
+}
+
+.table-container--2 {
+  display: flex;
+}
+
+.table-container--2 .main-table {
+  margin: 20px;
+}
+
+.table-container--2 .main-table td.table-column-price,
+.table-container--2 .main-table td.table-column-weight,
+.table-container--2 .main-table td.table-column-kkal {
+  min-width: 0;
 }

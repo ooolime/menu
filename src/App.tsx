@@ -75,16 +75,17 @@ function Home({ settings }: { settings: any }) {
       {settings?.slice(1)?.map((item: any) => {
         const slider = item?.img === "slider" ? "&slider=true" : "";
         return (
-          <Box m={2} key={item?.title + item?.monitor}>
+          <Box m={1} key={item?.button + item?.monitor}>
             <Button
               startIcon={<Monitor />}
               variant="contained"
               style={{ width: 320 }}
+              size="large"
               onClick={() =>
                 navigate(`/table?monitor=${item?.monitor}${slider}`)
               }
             >
-              {item?.title}
+              {item?.button}
             </Button>
           </Box>
         );
