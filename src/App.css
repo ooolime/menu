@@ -116,6 +116,7 @@ td.table-column-price,
 td.table-column-weight,
 td.table-column-kkal {
   min-width: 60px;
+  white-space: nowrap;
 }
 
 .table-container--2 {
@@ -130,4 +131,12 @@ td.table-column-kkal {
 .table-container--2 .main-table td.table-column-weight,
 .table-container--2 .main-table td.table-column-kkal {
   min-width: 0;
+}
+
+td.table-column-number {
+  vertical-align: top;
+}
+
+td.table-column-name {
+  line-height: 1.3em;
 }
