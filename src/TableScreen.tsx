@@ -136,7 +136,7 @@ const TableScreen: FC<Props> = ({ data }) => {
                         {row?.kkal}
                       </TableCell>
                       <TableCell align="right" className="table-column-price">
-                        {row?.price}
+                        {`${row?.price} р.`}
                       </TableCell>
                     </TableRow>
                   );
